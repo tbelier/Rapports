@@ -1,0 +1,109 @@
+\documentclass[twocolumn]{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{outlines}
+
+\title{Docking CONOPS}
+\author{BELIER Titouan}
+
+\begin{document}
+\maketitle
+\section{Underwater docking}
+\subsection{Context}
+New projects has appeared to create the future of underwater mine detection. Indeed, some cities like Brest, Brittany, France have been bombed during the WWII. The Brittania coast is a symbol of this periode and the D-Day landing. In 2020, Florence Parly, the French Army minister have approuved the beginning of a new program named SLAMF "système de lutte anti-mines futur", a subproject of MMCM (Maritime Mine Counter Measures). These projects leaded by French companies such a Thales or ECA aim to develop autonomous underwater system to detect, classify and explode underwater mines that have resurfaced from sediment.
+
+The 19th of april 2022, a 30m tall burst was iniated by the french navy along Brest coast to neutralize a German WW2 bomb that resurfaced. these projects are all the more important that French Sub-Surface Ballistic Nuclear submarines are based around Brest. Thus, protecting its coast is a major priority for French national interest. Using autonomous underwtaer vehicle seems to be the solution to prevent human divers from placing exploding payload on the actual mines.
+
+However, contrary to human divers, autonomous drones could take several minutes to recover. In a battlefield situation, taking 10 minutes to recover each one of the 20 robots composing a swarm is not a solution. Which leads to considering the us of underwater robots to neutralizes underwater mines as a bad solution. The goal is now to automatise the recovery system by creating a new process of inter-docking between every robots of the swarm. This paper will describe a potential operational situation where one robot will have be facing an issue during the mission and be sking others to dock to get more energy. The way they interact during the mission will also be described.
+
+\subsection{Mission}
+The mission takes place in a wide underwater environment. The goal is to scan an underwater seabed in order to detect, classify and localize potential underwater threats like mines. Some technological bricks would be overcomed if a system was able to succeed the next concept of operation.
+
+At 2PM, the french navies launch the YUCO, an autonomous underwater system (AUV) which aims to make the gateway between the FREMM (FRégate Européenne Multi-Mission), a multipurpose frigate and Castor and Pollux, two Remotely Operated Vehicle (ROV) able to scan seabed with their cameras and echosounders.
+
+Contrary to YUCO, Castor and Pollux are two truly energy consuming multi purpose tools linked to the surface vehicle thanks to a long wire that allows direct communication with an operator to certify the detected object as a threat that needs to be neutralized.
+
+YUCO is a powerful vehicle able to cover large areas underwater with less consumption thanks to its torpedo shape and steering fins. It carries a payload of several sensors such as Inertial measurment unit (IMU) to estimate its angular position, a Doppler velocity Log (DVL) to estimate its own speed and an Ultra Short Baseline, which emits acoustic pulses underwater to localize relative linear and angular distances with other drones USBL. These last sensors also enable drones to communicate between themselves and share sparse information.
+
+Around 3PM, Castor has raised a critical error and has tried to inform other drones that its remaining energy is low. He needs the help of Pollux to transfer data and get energy in return. However Pollux is too far away and behind a huge rock, the direct communication has failed. It is in the No-Communication Zone (NCZ). YUCO, which was staying above and navigated back and forth to transmit potential messages transfered the message to Pollux which immediatly answered back.
+
+The messages shared had multiple information carried:
+\begin{enumerate}
+    \item A header with the nature of the message (INFO, WARNING, ERROR),
+    \item A 3D linear and angular position,
+    \item The timestamp to log info and replay the mission back on land,
+    \item Everything were encoded as binaries to create the lightest messages possible as the communication is very limited underwater.
+\end{enumerate}
+
+1 minute after the error was raised, all robots were informed of the position of the others and agreed on a Meet-up Zone (MUZ). Both Castor and Pollux now need to navigate in the Free-to-go Zone (FGZ), the part of the environment they know to be cleared from every rock obstacle. Before the mission, the french marines stored an approximate map of the seabed topology and the No-Go Zone (NGZ) to help them find their way during the mission. However, if by following the preliminary path, Castor and Pollux detected an obstacle, they would avoid it with a minimal curve to stay on track.
+
+During their travel to the MUZ, both Castor and Pollux had a shift between their genuine position and the one they thought to be true. Indeed, by only using IMU and DVL to localize themselves, a technique knows as dead Reackoning, they only have the relative distance from the previous position. If there are disturbance like underwater current or sensor imprecision, the robot won't be aware of it and have a false estimation of its position. At the surface, robots will use GNSS which give them a genuine information of their position in the 3D space that will erase all the positionning error of the relative positionment system. That's why the frigate is doing a boustrophedon path in order to be above them during few seconds and transmit a genuine information of its position given by its GNSS. All the underwater drones can now recompute their own position as they know their relative position to a precisely positioned point.
+
+After 10 minutes of travel, Pollux has arrived at the MUZ, it turns around itself to look after Castor which arrives late, preserving its energy.
+
+Close enough to communicate and see each other, they are now able to localize themselves with their USBL which gives imprecise relative position. Their several cameras at different angles sometimes detect black and white markers placed on them named ArUco. These markers give them precise information about their relative position and orientation. They can now start a docking phase between themselves.
+
+To make the docking phase easier Castor and Pollux agree on positionning themselves at the same depth, the average one when they started the docking phase. This information precisely given by their pressure sensor allow them to get rid of one degree of freedom and virtually move in a 2D phase.
+
+Finally, the are moving in the same direction, minimizing their lateral distances along the way. 
+
+The mecanical interaction is made by a cylinder shaped bar on Pollux entering a hopper shaped one of Castor. By docking laterally while moving on the direction, they benefit from the flag effect which again, which avoid them from pitch and yaw movements.
+
+During the docking, the bar is moving in a labyrinth shaped part, forcing Castor and Pollux to turn and move around their axes to 
+
+
+\section{Theorical challenges}
+assa
+
+
+
+\section{Castor and Pollux}
+
+À travers l'architecture C2 de Castor et Pollux, nous détaillerons l'architecture logicielle implémentée. dans cette thèse. 
+
+Cette architecture sépare la partie observation de l'actionnement en plusieurs grands blocs. 
+
+\subsection{Observation :}
+
+La partie observation recense l'ensemble des blocs qui permettent la décision. Elle va de la récupération des données bruts du capteurs à la cartographie de l'environnement, en passant par le traitement et fusion des données des différents capteurs pour déterminer la localisation du robot. 
+Plus on monte dans cette branche du graphique, plus on monte en niveau. La récupération des données capteurs étant très bs niveau et la localization plus haut niveau d'un point de vue décisionnel. 
+
+\subsection{Données acoustiques}
+
+
+L'outil principal pour que nos drones sous-marins se répèrent est l'acoustique. Le positionnement est un aspect crucial de la robotique autonome puisque l'eau atténue tellement les ondes électromagnétiques qu'il est impossible d'obtenir un positionnement par GPS comme on le ferait en robotique terrestre ou aérienne. Il faut donc procéder différemment pour transférer des informations. 
+
+Les ondes acoustiques, au contraire se déplacent parfaitement dans un milieu aquatique. En se déplaçant dans le fluide, l'onde mécanique vient comprimer l'eau. Si l'on comprime et décomprime le fluide à des fréquences suffisantes, il est possible pour un hydrophone de retrouver l'information encodée comme le ferait une oreille. 
+
+Le capteur que nous utilisons est un USBL (Ultra Short Base Line), ce capteur possède plusieurs hydrophones très proches les uns des autres, séparés spatialement dans les 3 axes. En récupérant le temps d'arrivée de l'onde sur chacun des hydrophones, le capteur détermine l'écart temporelle d'arrivée et donc de remonter jusqu'à la position de l'émetteur par triangulation. 
+
+-- graphique
+
+
+Nous utilisons les USBL X150 de la marque Seatrac []. Peu coûteux, ils ne sont pas toujours fiables sur les données de l'IMU intégrée. On obtient donc des données acoustiques fiables mais une détermination de la pose insuffisante. Pour pallier ce problème, nous utilisons l'IMU intégrée au BlueROV2 et les données acoustiques du X150. 
+
+Avec ces deux informations, il est possible de retrouver la position d'un robot B dans le repère du robot A. cf figure
+
+\subsection{Données visuelles}
+Un autre procédé de localisation sous marine commun est l'utilisation de marqueurs fiduciaires (marqueurs ArUco) pour déterminer la position et l'orientation d'un robot B dans le repère du robot A. 
+
+On récupère donc l'image venant de la caméra interne au BlueRov, on lui applique des  traitement pour faire ressortir les informations du marqueur avec un passage en nuance de gris puis une égalisation des histogrammes de contraste (CLAHE). Ensuite on utilise les modules OpenCV pour déterminer la pose. 
+
+\subsection{Fusion}
+Les donnés acoustiques et de vision sont de natures différentes. Si les données acoustiques nous renvoient les coordonnés sphériques du robot traqué, les données de vision nous renvoient la position dans un repère cartésien et l'orientation avec des angles de Rodrigues. 
+
+De plus, les données USBL peuvent être très bruitées au cours de la mission, proche de la surface ou d'obstacles par exemple. Les donnés de vision elles sont assez précises après calibration de la caméra. En revanche, les données sont très éparses à cause du milieu marin. En effet, on observe des phénomènes de bulles ou d'obstacles qui entravent la drtection du marqueur. De plus proche de la surface il y a un forr contraste de luminosité entre la partie de l'image proche de l surface et le fond de la mer qui est bien plus sombre, ce qui empêche la détzction également
+
+
+\end{document}

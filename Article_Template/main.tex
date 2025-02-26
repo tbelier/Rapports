@@ -1,0 +1,200 @@
+\documentclass[twocolumn]{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{outlines}
+
+\title{Title - Keywords + Reference to application/Context}
+\author{Authors}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\begin{outline}
+    \1 Context [1 to 2 ph]
+    \2 Theme/ Broad intro
+    \2 Identified gap in research
+    \2 Problem statement
+    \1 Contribution
+    \2 \emph{This work presents ...}
+    \1 Related work
+    \1 Conclusion on results \emph{Contrary to previous solutions, the method introduced in this work closes the gap}
+\end{outline}
+
+\end{abstract}
+
+\section{Introduction}
+\begin{outline}
+\1 Broad Introduction
+\1 Context
+\1 Application Examples [Understandable by reviewers outside of the field]
+\2 Inspection/ Maintenance of offshore structures/systems
+\2 Biodiversity monitoring
+\2 Explore sunk wreckage
+\2 Help understanding of the ocean
+\2 Unlock new technology (offshore energy production)
+\2 Replace arduous/dangerous work
+\2 Ease work conditions
+\2 ...
+\1 Problem Statement [Make things very clear]
+\2 Pas de GPS sous l'eau
+\2 Pas de methode de localisation fiable
+\2 Manque de controlleur robuste et simple sans modele
+\2 Need for efficient obstacle avoidance solution for sailboat
+\2 Limits due to ROV cables
+\2 Limited autonomy needs to be enhanced
+\2 Limited maneuverability needs to be enhanced
+\2 Limitations in computational power
+\2 Limitations in onboard volume/space/weight
+\2 Aim toward frugality
+\2 Need for new docking solutions
+\2 Need for new locomotion solution
+\2 ...
+\end{outline}
+
+\subsection{Related Works}
+mettre en avant les problemes
+\begin{outline}
+\1 Ancestral methods in the field
+\2 Methods to compare to (PID/SMC/LQR/Kalman)
+\1 Recent works in the field (less than 5/10 years)
+\2 Methods to compare to (MPC/ADRC/IA/NN)
+\2 Pick 2 to 4 methods total to compare to
+\2 Can be some of your previous works
+\1 Broadly related works [For reviewers outside of the field]
+\2 Different domain but same goal
+\3 Terrestrial/Flying
+\3 Biomimetism
+\3 Manipulator arms
+\3 Network management
+\3 ...
+\2 Different application but comparable problems
+\end{outline}
+
+\subsection{Contribution}
+bullet points
+\begin{outline}
+\1 Description of the concept/ Method / Approach / Hypothess
+\1 Bullet points contributions
+\1 Results obtained
+\1 Why/How is it novelty ? 
+\2 \emph{Closes the gap in research}
+\2 \emph{Never done before}
+\2 \emph{Contrary to \emph{[methods introduced in related work]} this new approach allows ...}
+\end{outline}
+
+\subsection{Outline}
+
+\section{Problem Definition and Preliminaries [Material and Methods]}
+\subsection{Problem Definition}
+\begin{outline}
+\1 If possible : relate an application problem to math constraint (e.g. gimbal loc)
+\1 Detail application
+\2 Trajectories
+\2 Specific need
+\2 Specific Environment
+\1 Usual assumptions + why [Bullet points]
+\2 Horizontal plane \emph{aucun effet des phénomènes hors du plan horizontal sur la solution}
+\2 Constant/slowly varying disturbance
+\2 Bounded disturbance
+\2 Bounded inputs
+\2 Recall limitations from intro
+\end{outline}
+
+\subsection{Preliminaries}
+\begin{outline}
+\1 Mathematical tools 
+\2 Interval analysis
+\2 Command methods
+\2 Optimization problems ...
+\1 Techno
+\2 Description of the system
+\2 Sensors
+\2 Computational power / Architecture
+\1 Model description
+\1 Notation
+\end{outline}
+
+\section{Main contributions}
+\subsection{Complicated/Unfamiliar Hypotheses demonstration}
+\begin{outline}
+\1 If some assumptions are not usual: demonstrate they are well thought
+\end{outline}
+\subsection{Design of the solution}
+\begin{outline}
+\1 Equations
+\1 Technological solution
+\1 Algorithm
+\1 ...
+\end{outline}
+\subsection{Analysis}
+\begin{outline}
+\1 Math : Theorem/Proof
+\2 Theorem : \emph{Controller [] introduced in [] ensures stability of system [] towards reference []}
+\2 Proof : \emph{Lyapunov analysis}
+\1 ?
+\end{outline}
+
+\section{Results}
+\subsection{Simulation}
+\begin{outline}
+\1 Simulator
+\2 Assumptions
+\2 Modelled phenomena (current, waves, wind, ...)
+\2 Type of simulator 
+\3 Python/Matlab : Math results (control/stability...)
+\3 Multiphysics/Gazebo : Application results (Obstacle avoidance, Robotic concept, ...)
+
+\1 Comparative methods
+
+\1 Results
+\2 Concept alone + Discussion
+\2 Comparative figure + Discussion
+\2 Table of Results
+\3 Comparison metrics
+
+\end{outline}
+
+
+\subsection{Experiments}
+\begin{outline}
+\1 Context of the experiment
+\2 Consequences on the system
+
+
+\1 Comparative methods
+
+\1 Results
+\2 Concept alone + Discussion
+\2 Comparative figure + Discussion
+\2 Table of Results
+\3 Comparison metrics
+\end{outline}
+
+\section{Discussion / Conclusion}
+\begin{outline}
+\1 Go back to abstract/Intro
+\1 Show how the gap in research has been closed
+\2 Recall some comparative metrics
+\2 Recall some outstanding performance
+\1 Future works
+\2 Future needs highlighted by your work
+\2 Future steps to application of your work
+\end{outline}
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
