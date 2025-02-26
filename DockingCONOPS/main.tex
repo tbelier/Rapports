@@ -39,12 +39,12 @@ YUCO is a powerful vehicle able to cover large areas underwater with less consum
 Around 3PM, Castor has raised a critical error and has tried to inform other drones that its remaining energy is low. He needs the help of Pollux to transfer data and get energy in return. However Pollux is too far away and behind a huge rock, the direct communication has failed. It is in the No-Communication Zone (NCZ). YUCO, which was staying above and navigated back and forth to transmit potential messages transfered the message to Pollux which immediatly answered back.
 
 The messages shared had multiple information carried:
-\begin{enumerate}
+\begin{itemize}
     \item A header with the nature of the message (INFO, WARNING, ERROR),
     \item A 3D linear and angular position,
     \item The timestamp to log info and replay the mission back on land,
     \item Everything were encoded as binaries to create the lightest messages possible as the communication is very limited underwater.
-\end{enumerate}
+\end{itemize}
 
 1 minute after the error was raised, all robots were informed of the position of the others and agreed on a Meet-up Zone (MUZ). Both Castor and Pollux now need to navigate in the Free-to-go Zone (FGZ), the part of the environment they know to be cleared from every rock obstacle. Before the mission, the french marines stored an approximate map of the seabed topology and the No-Go Zone (NGZ) to help them find their way during the mission. However, if by following the preliminary path, Castor and Pollux detected an obstacle, they would avoid it with a minimal curve to stay on track.
 
@@ -60,11 +60,27 @@ Finally, the are moving in the same direction, minimizing their lateral distance
 
 The mecanical interaction is made by a cylinder shaped bar on Pollux entering a hopper shaped one of Castor. By docking laterally while moving on the direction, they benefit from the flag effect which again, which avoid them from pitch and yaw movements.
 
-During the docking, the bar is moving in a labyrinth shaped part, forcing Castor and Pollux to turn and move around their axes to 
+During the docking, the docking appendix is moving in a labyrinth shaped part, forcing Castor and Pollux to turn and move around their axes to finalize the docking. This docking labyrinth is made to be homogeneous for every robot. A whole structure fixed to the robot frame was also made to carry this labyrinth. This mecanical structure can be adapted to every kind of robot, this way, every robot can have their own structure but the same labyrinth to be able to dock with every other robots during the mission.
 
+Now that the docking phase is finished, Castor got enough energy from Pollux to be able to continue its mission. If it was not the cas, it could go back to the USV to have more energy. Allowing Pollux to continue its own one.
+
+At the end of the mission, to make it easier for marines to recover them, drones dock between each other. Allowing marines to only fix one to the crane on the USV and get directly YUCO, Castor and Pollux in one move. Otherwise, they would have to recover every drone individually, which can be realluy time consuming. Indeed, in a rough sea, marines could spend 10 minutes to recover only one drone. However, spending 30 minutes recovering drones in an hazardous situation is not an option. 
+
+Being able to dock drones autonomously underwater is a key update for underwater warfare :
+
+\begin{itemize}
+    \item for marines, but also drones, security during recovery,
+    \item for collaborative swarm mission and mission autonomy.
+\end{itemize}
+
+
+
+// --------------------------------------
+
+// TODO :
 
 \section{Theorical challenges}
-assa
+
 
 
 
